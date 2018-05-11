@@ -24,6 +24,7 @@ flag config originalIsoCode =
         isoCode =
             if Dict.member upperCasedIsoCode config.countries then
                 upperCasedIsoCode
+
             else
                 ""
     in

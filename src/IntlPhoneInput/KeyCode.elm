@@ -81,15 +81,18 @@ toKeyCode keyData =
         _ ->
             if keyData.ctrlKey || keyData.altKey then
                 Result.Err "alt or ctrl key is pressed"
+
             else if List.member keyData.keyCode alphabetKeyCodes then
                 Char.fromCode keyData.keyCode
                     |> (if keyData.shiftKey then
                             Char.toUpper
+
                         else
                             Char.toLower
                        )
                     |> Alphabet
                     |> Result.Ok
+
             else
                 Result.Err (toString keyData.keyCode ++ "is ignored")
 
@@ -108,6 +111,7 @@ key : KeyCode -> KeyData -> Json.Decode.Decoder KeyCode
 key keyCode keyData =
     if toKeyCode keyData == Result.Ok keyCode then
         Json.Decode.succeed keyCode
+
     else
         Json.Decode.fail "ignore"
 

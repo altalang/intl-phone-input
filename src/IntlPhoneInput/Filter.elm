@@ -14,6 +14,7 @@ filterDict : String -> Dict String CountryData -> List ( String, CountryData )
 filterDict keyword dict =
     if String.isEmpty keyword then
         dict |> Dict.toList
+
     else
         dict |> Dict.toList |> filterList keyword
 
@@ -22,6 +23,7 @@ filterList : String -> List ( String, CountryData ) -> List ( String, CountryDat
 filterList keyword list =
     if String.isEmpty keyword then
         list
+
     else
         list
             |> List.filter (contains keyword)

@@ -40,6 +40,7 @@ countriesView config (State state) phoneNumber =
                 )
                 (if Set.isEmpty state.filteredCountries && String.isEmpty state.keyword then
                     config.countries |> Dict.toList |> config.countriesSorter
+
                  else
                     state.filteredCountries |> Config.toCountryDataList config
                 )
@@ -58,6 +59,7 @@ countryView config isoCode countryData (State state) phoneNumber =
             (Css.Country
                 :: (if String.toUpper phoneNumber.isoCode == isoCode then
                         [ Css.Highlighted ]
+
                     else
                         []
                    )
